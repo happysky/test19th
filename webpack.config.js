@@ -24,6 +24,9 @@ module.exports = {
                         },
                     },
                 ],
+            },{
+                test: require.resolve('zepto'),
+                loader: 'exports-loader?window.Zepto!script-loader'
             }
         ]
     },

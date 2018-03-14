@@ -11,18 +11,39 @@ html,body{
 .first{
     position: relative;
     height: 100%;
-    background-color:#ff482f;
-    color: #fddd16;
+    background:#cc1011 url('../img/index-bj.png') no-repeat center 10px;
+    background-size: 251px 208px;
+    color: #f3fec2;
+    text-align: center;
 }
 .first h1{
     text-align: center;
     line-height: 50px;
 }
+.first .index-input{
+    height: 40px;
+    line-height: 40px;
+    width: 200px;
+    border: 0;
+    border-radius: 2px;
+    background: #f3fec2;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    color: #333;
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    margin-left: -100px;
+}
 .first .index-button{
     position: absolute;
-    bottom: 50px;
-    width: 100px;
-    height: 30px;
+    left: 50%;;
+    bottom: 100px;
+    width: 200px;
+    height: 40px;
     background: url('../img/index-button.png');
     text-align: center;
+    margin-left: -100px;
+    background-size: 200px 40px;
 }
