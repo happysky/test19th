@@ -1,0 +1,28 @@
+html,body{
+    min-height: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.heightFullScreen, .heightFullScreen body {
+    height: 100%;
+}
+.first{
+    position: relative;
+    height: 100%;
+    background-color:#ff482f;
+    color: #fddd16;
+}
+.first h1{
+    text-align: center;
+    line-height: 50px;
+}
+.first .index-button{
+    position: absolute;
+    bottom: 50px;
+    width: 100px;
+    height: 30px;
+    background: url('../img/index-button.png');
+    text-align: center;
+}

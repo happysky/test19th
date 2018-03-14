@@ -47,17 +47,17 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
-            hash: true, //如果要开启inlineSource则不能开启hash，否则会找不到文件
-            // inlineSource: '.(js|css)',
-            // minify: {
-            //     inject: true,
-            //     removeAttributeQuotes: true,
-            //     collapseWhitespace: true,
-            //     html5: true,
-            //     minifyCSS: true,
-            //     removeComments: true,
-            //     removeEmptyAttributes: true
-            // }
+            //hash: true, //如果要开启inlineSource则不能开启hash，否则会找不到文件
+            inlineSource: '.(js|css)',
+            minify: {
+                inject: true,
+                removeAttributeQuotes: true,
+                collapseWhitespace: true,
+                html5: true,
+                minifyCSS: true,
+                removeComments: true,
+                removeEmptyAttributes: true
+            }
         }),
         new HtmlWebpackInlineSourcePlugin() // 实例化内联资源插件
     ]
