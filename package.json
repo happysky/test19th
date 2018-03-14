@@ -1,0 +1,28 @@
+{
+  "name": "test19th",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --profile --devtool eval --progress --colors --hot",
+    "deploy": "webpack-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happysky/test19th.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/happysky/test19th/issues"
+  },
+  "homepage": "https://github.com/happysky/test19th#readme",
+  "devDependencies": {
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.0.6",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
