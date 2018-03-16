@@ -937,20 +937,19 @@ const app = {
     showRemainingTime: ()=>{
         let message_con = $('.message')
         let last_time_con
-        let total_time = 30
-        let timer
+        let total_time = 300 //共5分钟，300秒
 
         message_con.html(`<p>剩余时间：<span id="last_time">5分0秒</span></p>`)
 
         last_time_con = $('#last_time')
 
-        timer = setInterval(()=>{
+        app.total_timer = setInterval(()=>{
             let last_time = --total_time
             let minute = Math.floor(last_time / 60)
             let second = last_time%60
 
             if(last_time == 0){
-                clearTimeout(timer)
+                clearInterval(app.total_timer)
 
                 //自动交卷
                 app.showList(app.questions_num)
@@ -1076,6 +1075,12 @@ const app = {
         result_score_con.html(score + '分');
         result_text_con.html(result_text)
         result_container.show();
+
+        //清除答卷倒计时
+        if(app.total_timer){
+            clearInterval(app.total_timer)
+        }
+        
         
         $.ajax({
             url: '/app/update.php',
@@ -1177,7 +1182,8 @@ const app = {
                     app.user_name = user_name;
 
                     first_container.hide()
-                    app.showList.show(-1)
+                    app.showList(-1)
+                    subject_container.show()
 
                 },
                 error: function(){
