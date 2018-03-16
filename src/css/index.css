@@ -57,6 +57,11 @@ em {
     padding: 0 10px;
     font-size: 14px;
 }
+.subject .tips{
+    margin: 20px 0 200px 0;
+    line-height: 25px;
+    font-size: 16px;
+}
 .subject header{
     background: #cc1011;
     height: 40px;
@@ -70,7 +75,7 @@ em {
 .subject .message{
     font-size: 14px;
     margin: 7px 0 5px;
-    color: #737070;
+    color: #cc1011;
 }
 .subject .message .time{
     float: right;

@@ -932,16 +932,32 @@ const app = {
         app.subject_con = $('#subject_con')
         app.submit_btn = $('.buttons .submit')
 
-        app.showMessage();
-        app.showList();
         app.bindEvent()
-
-        console.log(app.questions);
     },
-    showMessage: ()=>{
+    showRemainingTime: ()=>{
         let message_con = $('.message')
+        let last_time_con
+        let total_time = 30
+        let timer
 
-        message_con.html(`<p>588人测试完成<span class="time">${app.getTime()}</span></p>`)
+        message_con.html(`<p>剩余时间：<span id="last_time">5分0秒</span></p>`)
+
+        last_time_con = $('#last_time')
+
+        timer = setInterval(()=>{
+            let last_time = --total_time
+            let minute = Math.floor(last_time / 60)
+            let second = last_time%60
+
+            if(last_time == 0){
+                clearTimeout(timer)
+
+                //自动交卷
+                app.showList(app.questions_num)
+            }
+
+            last_time_con.html(`${minute}分${second}秒`);
+        },1000)
     },
     getTime: ()=>{
         let now = new Date;
@@ -975,6 +991,7 @@ const app = {
         let q_index = ['A','B','C','D','E','F','G','H']
         let htmls = []
         let question = app.questions[index]
+        let timer
 
         if(index >= app.questions_num){
             subject_container.hide();
@@ -983,14 +1000,24 @@ const app = {
             return false;
         }
 
-        htmls.push(`<p class="list-title">当前第<em class="index">${index+1}</em>/<em class="count">${app.questions_num}</em>题</p>`)
-        htmls.push(`<h3>${index+1}.${question.title}</h3>`)
-        htmls.push(`<ul>`)
-        question.item.forEach((item, index)=>{
-            htmls.push(`    <li data-index="${q_index[index]}">${item}</li>`)
-        })
+        if(index > -1){
+            htmls.push(`<p class="list-title">当前第<em class="index">${index+1}</em>/<em class="count">${app.questions_num}</em>题</p>`)
+            htmls.push(`<h3>${index+1}.${question.title}</h3>`)
+            htmls.push(`<ul>`)
+            question.item.forEach((item, index)=>{
+                htmls.push(`    <li data-index="${q_index[index]}">${item}</li>`)
+            })
+            
+            htmls.push(`</ul>`)
+        }else{
+            htmls.push('<div class="tips">');
+            htmls.push('<p>测试说明：</p>');
+            htmls.push('<p>    1、共20道题，需要在5分钟内答完；</p>');
+            htmls.push('<p>    2、题中有单选，有多选，单选多选混合排列；</p>');
+            htmls.push('</div>');
+        }
+
         
-        htmls.push(`</ul>`)
 
         app.subject_con.html(htmls.join(''))
 
@@ -1002,8 +1029,24 @@ const app = {
             submit_btn.addClass('disable');
         }
 
-        if(index+1 == app.questions_num){
+        if(index == -1){
+            submit_btn.html('开始测试 5s')
+            let last_time = 4
+            timer = setInterval(()=>{
+                let str = '开始测试'
+                if(last_time > 0){
+                    str +=' ' + last_time + 's'
+                    last_time--
+                }else{
+                    clearInterval(timer)
+                    submit_btn.removeClass('disable')
+                }
+                submit_btn.html(str)
+            },1000)
+        }else if(index+1 == app.questions_num){
             submit_btn.html('完成测试')
+        }else{
+            submit_btn.html('下一题')
         }
     },
     showResult: ()=>{
@@ -1134,7 +1177,7 @@ const app = {
                     app.user_name = user_name;
 
                     first_container.hide()
-                    subject_container.show()
+                    app.showList.show(-1)
 
                 },
                 error: function(){
@@ -1178,7 +1221,13 @@ const app = {
                 return false;
             }
 
-            app.questions[app.curIndex].selected = answers
+            if(app.questions[app.curIndex]){
+                app.questions[app.curIndex].selected = answers    
+            }
+
+            if(app.curIndex == -1){
+                app.showRemainingTime();
+            }
 
             app.showList(app.curIndex+1);
         })
