@@ -1,0 +1,32 @@
+html,body{
+    min-height: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+em {
+    font-style: normal;
+}
+.header{
+    background: #cc1011;
+    height: 40px;
+    line-height: 40px;
+    color: #f3fec2;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.list li{
+    position: relative;
+    line-height: 20px;
+    border-bottom: #ccc solid 1px;
+    padding: 10px 10px 10px 50px;
+}
+.list li em{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}

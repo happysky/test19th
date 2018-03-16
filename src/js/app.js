@@ -1037,6 +1037,7 @@ const app = {
         $.ajax({
             url: '/app/save.php',
             type: 'POST',
+            dataType: 'json',
             data:{
                 name: app.user_name,
                 score: score,
@@ -1113,11 +1114,35 @@ const app = {
                 return false;
             }
 
-            //存储用户姓名
-            app.user_name = user_name;
+            $.ajax({
+                url: '/app/save.php',
+                type: 'POST',
+                dataType: 'json',
+                data:{
+                    name: user_name,
+                    t: (new Date).getTime()
+                },
+                success: (data = {})=>{
+                    let state = data.state;
+    
+                    if(state != 1){
+                        alert('用户名重复，请更换用户名')
+                        return false;
+                    }
 
-            first_container.hide()
-            subject_container.show()
+                    //存储用户姓名
+                    app.user_name = user_name;
+
+                    first_container.hide()
+                    subject_container.show()
+                    
+                },
+                error: function(){
+                    alert('程序异常，请刷新页面或稍后重试')
+                }
+            })
+
+            
         });
 
         subject_con.on('click', 'li', (event)=>{
