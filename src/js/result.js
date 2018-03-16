@@ -28,6 +28,10 @@ const result = {
                     htmls.push(`    <p>时间：${item.time}</p>`)
                     htmls.push(`</li>`)
                 })
+
+                if(data.list.length == 0){
+                    htmls.push('<p style="text-align: center;margin: 100px;">还没有人参与</p>')
+                }
                 htmls.push('</ul>');
 
                 container.html(htmls.join(''))

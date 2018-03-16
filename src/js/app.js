@@ -1035,7 +1035,7 @@ const app = {
         result_container.show();
         
         $.ajax({
-            url: '/app/save.php',
+            url: '/app/update.php',
             type: 'POST',
             dataType: 'json',
             data:{
@@ -1135,7 +1135,7 @@ const app = {
 
                     first_container.hide()
                     subject_container.show()
-                    
+
                 },
                 error: function(){
                     alert('程序异常，请刷新页面或稍后重试')
