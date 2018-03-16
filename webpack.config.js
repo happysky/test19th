@@ -45,6 +45,7 @@ module.exports = {
         disableHostCheck: true,
         //noInfo:true,
         // proxy: {
+        //     '/app/save.php': '/app/save.php'
         // }
     },
     plugins: [

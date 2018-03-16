@@ -4,6 +4,10 @@ html,body{
 *{
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+em {
+    font-style: normal;
 }
 .heightFullScreen, .heightFullScreen body {
     height: 100%;
@@ -46,4 +50,123 @@ html,body{
     text-align: center;
     margin-left: -100px;
     background-size: 200px 40px;
+}
+.subject {
+    height: 100%;
+    background: #fdf8f1;
+    padding: 0 10px;
+    font-size: 14px;
+}
+.subject header{
+    background: #cc1011;
+    height: 40px;
+    line-height: 40px;
+    color: #f3fec2;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    margin: 0 -10px;
+}
+.subject .message{
+    font-size: 14px;
+    margin: 7px 0 5px;
+    color: #737070;
+}
+.subject .message .time{
+    float: right;
+}
+
+.subject .subject_con .list-title{
+    color: #333;
+    border-bottom: #e8dcca solid 1px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+}
+.subject .subject_con h3{
+    margin: 10px 0;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 5px;
+    color: #333;
+    line-height: 22px;
+}
+.subject .subject_con li {
+    position: relative;
+    line-height: 20px;
+    background: #fdffff;
+    cursor: pointer;
+    border-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #a56813;
+    border-radius: 6px;
+    padding: 10px 5px 10px 40px;
+}
+.subject .subject_con li::before {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    left: 12px;
+    top: 50%;
+    margin-top: -6px;
+    background-image: url("../img/option.png");
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+.subject .subject_con .active::before {
+    background-image: url("../img/select.png");
+}
+
+.subject .buttons{
+    overflow: hidden;
+    text-align: center;
+    margin-top: 26px;
+    margin-bottom: 15px;
+}
+.subject .buttons a {
+    display: inline-block;
+    font-size: 12px;
+    position: relative;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    zoom: 1;
+    background: #cc1011;
+    color: #f3fec2;
+    text-decoration: none;
+    height: 35px;
+    line-height: 35px;
+    width: 180px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.subject .buttons .disable{
+    opacity: 0.3;
+}
+
+.result{
+    height: 100%;
+    background: #cc1011;
+    color: #f3fec2;
+    font-size: 44px;
+    font-weight: 700;
+    text-align: center;    
+}
+.result div{
+    padding: 100px 10px 0 10px;
+}
+.result .score{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.result .text{
+    font-size: 26px;
 }
