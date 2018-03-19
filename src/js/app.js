@@ -1,3 +1,4 @@
+import "babel-polyfill"
 import css from '../css/index.css'
 import $ from 'zepto'
 
