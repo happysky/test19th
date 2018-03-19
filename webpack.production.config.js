@@ -18,7 +18,16 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        presets: [
+                            [ "env", {
+                                // "targets": {
+                                //     "safari": 10
+                                // },
+                                // "modules": false,
+                                //"useBuiltIns": true,
+                                //"debug": true
+                          }]
+                        ]
                     }
                 }]
             },{

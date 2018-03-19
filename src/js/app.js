@@ -1113,7 +1113,7 @@ const app = {
         let getQuestions = (questions, num)=>{
             let questions_length = questions.length
             let results = [];
-            let indexs = new Set();
+            let indexs = {};
 
             //如果列表总数小于需求量，则直接返回
             if(questions_length < num){
@@ -1123,10 +1123,10 @@ const app = {
             while(results.length < num){
                 let _index = Math.floor(Math.random() * questions_length)
                 
-                if(!indexs.has(_index)){
+                if(!indexs[_index]){
                     results.push(questions[_index])
 
-                    indexs.add(_index)
+                    indexs[_index] = "1"
                 }
             }
 
