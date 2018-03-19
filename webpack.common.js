@@ -1,9 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
 module.exports = {
-    mode: 'production',
     entry: {
         main: path.resolve(__dirname, './src/js/app.js'),
         result: path.resolve(__dirname, './src/js/result.js')
@@ -18,16 +16,7 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: [
-                            [ "env", {
-                                // "targets": {
-                                //     "safari": 10
-                                // },
-                                // "modules": false,
-                                //"useBuiltIns": true,
-                                //"debug": true
-                          }]
-                        ]
+                        presets: ['env']
                     }
                 }]
             },{
@@ -49,23 +38,6 @@ module.exports = {
                 loader: 'exports-loader?window.Zepto!script-loader'
             }
         ]
-    },
-    devServer: {
-        host: "127.0.0.1",
-        contentBase: path.join(__dirname, "dist"),
-        port: 8080,
-        watchContentBase: true,
-        inline: true,
-        compress: true,
-        open: true, //是否自动打开浏览器
-        // https: {
-        //     key: "xx",
-        //     cert: "xx"
-        // },
-        disableHostCheck: true,
-        //noInfo:true,
-        // proxy: {
-        // }
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -99,7 +71,6 @@ module.exports = {
                 removeComments: true,
                 removeEmptyAttributes: true
             }
-        }),
-        new HtmlWebpackInlineSourcePlugin() // 实例化内联资源插件
+        })
     ]
 };
