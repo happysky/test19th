@@ -41,14 +41,28 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        runtimeChunk: {
+            name: "manifest"
+        },
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, './src/index.html'),
             //hash: true, //如果要开启inlineSource则不能开启hash，否则会找不到文件
-            inlineSource: '.(js|css)',
-            chunks: ['main'],
+            // inlineSource: '.(js|css)',
+            chunks: ['manifest','vendor','main'],
             minify: {
                 inject: true,
                 removeAttributeQuotes: true,
@@ -63,8 +77,8 @@ module.exports = {
             filename: 'result.html',
             template: path.resolve(__dirname, './src/result.html'),
             //hash: true, //如果要开启inlineSource则不能开启hash，否则会找不到文件
-            inlineSource: '.(js|css)',
-            chunks: ['result'],
+            // inlineSource: '.(js|css)',
+            chunks: ['manifest','vendor','result'],
             minify: {
                 inject: true,
                 removeAttributeQuotes: true,
