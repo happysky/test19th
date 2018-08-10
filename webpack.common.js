@@ -4,21 +4,46 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './src/js/app.js'),
-        result: path.resolve(__dirname, './src/js/result.js')
+        main: ["babel-polyfill",path.resolve(__dirname, './src/js/app.js')],
+        result: ["babel-polyfill",path.resolve(__dirname, './src/js/result.js')]
     },
     output: {
       //filename: '[name].js'
       filename: '[name].[chunkhash].js',
     },
+    resolve: {
+        extensions: [
+            '.js',
+            '.jsx',
+            '.less',
+            '.css',
+            '.html'
+        ],
+        alias: {
+            //utils: path.resolve(__dirname, `${pathConfig.clientSrcPath}/utils`)
+        }
+    },
     module: {
         rules: [{
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+                include: path.resolve(__dirname, "src"),
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        "presets": [
+                            "react",
+                            "env",
+                            "stage-2"
+                          ],
+                          "plugins": [
+                            //"transform-async-to-generator",
+                          //   "universal-import"
+                          ],
+                          "env": {
+                            "development": {
+                              // "plugins": ["react-hot-loader/babel"]
+                            }
+                          }
                     }
                 }]
             },{

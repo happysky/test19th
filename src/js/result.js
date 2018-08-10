@@ -4,6 +4,15 @@ import $ from 'zepto'
 const result = {
     init: ()=>{
         result.getData();
+        // require(['./app'],()=>{
+        //     console.log('a');
+        // })
+        // require.ensure(['./app'],()=>{
+        //     console.log('b');
+        // })
+        require.resolve('./app',()=>{
+            console.log('c');
+        })
     },
     getData: ()=>{
         let container = $('.container .list');

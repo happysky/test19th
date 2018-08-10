@@ -1,0 +1,16 @@
+{
+    "presets": [
+      "react",
+      "env",
+      "stage-2"
+    ],
+    "plugins": [
+      //"transform-async-to-generator",
+    //   "universal-import"
+    ],
+    "env": {
+      "development": {
+        // "plugins": ["react-hot-loader/babel"]
+      }
+    }
+  }
